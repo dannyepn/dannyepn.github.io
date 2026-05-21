@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Byron Velasco — Arquitecto de IA Empresarial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0a0d;--surface:#111116;--surface2:#18181f;--border:#1f1f2a;--border2:#2a2a38;--text:#ededf2;--text2:#8888a0;--text3:#555568;--amber:#f0a500;--amber2:#ffc233;--teal:#00d4aa;--blue:#4f8ef7;--font-display:'Syne',sans-serif;--font-body:'Plus Jakarta Sans',sans-serif;--font-mono:'JetBrains Mono',monospace;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:15px;line-height:1.7;overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.6;}
+  .container{max-width:1100px;margin:0 auto;padding:0 2rem;position:relative;z-index:1;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 0;background:rgba(10,10,13,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+  nav .inner{max-width:1100px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;}
+  .nav-logo{font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--text);text-decoration:none;letter-spacing:-.02em;}
+  .nav-logo span{color:var(--amber);}
+  .nav-right{display:flex;align-items:center;gap:1rem;}
+  nav ul{list-style:none;display:flex;gap:2rem;align-items:center;}
+  nav a{color:var(--text2);text-decoration:none;font-size:.85rem;font-weight:500;letter-spacing:.02em;text-transform:uppercase;transition:color .2s;}
+  nav a:hover{color:var(--amber);}
+  .nav-cta{background:var(--amber)!important;color:var(--bg)!important;padding:.45rem 1.1rem;border-radius:4px;font-weight:600!important;}
+  .nav-cta:hover{background:var(--amber2)!important;}
+  .lang-btn{background:transparent;border:1px solid var(--border2);color:var(--text2);font-family:var(--font-mono);font-size:.72rem;font-weight:500;padding:.35rem .75rem;border-radius:4px;cursor:pointer;transition:all .2s;letter-spacing:.08em;display:flex;align-items:center;gap:.35rem;}
+  .lang-btn:hover{border-color:var(--amber);color:var(--amber);}
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 0 5rem;position:relative;overflow:hidden;}
+  .hero::after{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(240,165,0,.06) 0%,transparent 70%);pointer-events:none;}
+  .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(240,165,0,.08);border:1px solid rgba(240,165,0,.2);border-radius:100px;padding:.35rem .9rem;font-family:var(--font-mono);font-size:.72rem;color:var(--amber);letter-spacing:.05em;text-transform:uppercase;margin-bottom:2rem;width:fit-content;}
+  .hero-badge::before{content:'';width:6px;height:6px;background:var(--teal);border-radius:50%;animation:pulse 2s ease infinite;}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.8);}}
+  .hero h1{font-family:var(--font-display);font-size:clamp(2.8rem,6vw,5rem);font-weight:800;line-height:1.02;letter-spacing:-.04em;margin-bottom:1.5rem;}
+  .hero h1 em{font-style:normal;color:var(--amber);}
+  .hero-sub{font-size:1.05rem;color:var(--text2);max-width:560px;line-height:1.7;margin-bottom:2.5rem;}
+  .hero-sub strong{color:var(--text);font-weight:600;}
+  .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.6rem;border-radius:5px;font-weight:600;font-size:.9rem;text-decoration:none;transition:all .2s;cursor:pointer;border:none;}
+  .btn-primary{background:var(--amber);color:var(--bg);}
+  .btn-primary:hover{background:var(--amber2);transform:translateY(-1px);}
+  .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border2);}
+  .btn-ghost:hover{border-color:var(--text3);background:var(--surface);}
+  .hero-stats{display:flex;gap:3rem;margin-top:4rem;padding-top:2.5rem;border-top:1px solid var(--border);flex-wrap:wrap;}
+  .stat-num{font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--text);letter-spacing:-.04em;}
+  .stat-num span{color:var(--amber);}
+  .stat-label{font-size:.8rem;color:var(--text2);text-transform:uppercase;letter-spacing:.08em;}
+  section{padding:5rem 0;}
+  .section-label{font-family:var(--font-mono);font-size:.72rem;color:var(--amber);text-transform:uppercase;letter-spacing:.12em;margin-bottom:1rem;}
+  h2{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;letter-spacing:-.03em;margin-bottom:.75rem;}
+  .section-sub{color:var(--text2);max-width:540px;margin-bottom:3rem;}
+  .divider{height:1px;background:var(--border);}
+  .positioning-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:2rem;}
+  .pos-card{background:var(--surface);padding:2rem;transition:background .2s;}
+  .pos-card:hover{background:var(--surface2);}
+  .pos-icon{font-family:var(--font-mono);font-size:1.5rem;color:var(--amber);font-weight:500;margin-bottom:1rem;}
+  .pos-card h3{font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:.5rem;}
+  .pos-card p{font-size:.85rem;color:var(--text2);line-height:1.6;}
+  .intersection-banner{background:linear-gradient(90deg,rgba(240,165,0,.06),rgba(0,212,170,.04));border:1px solid rgba(240,165,0,.15);border-radius:6px;padding:1.25rem 1.75rem;display:flex;align-items:center;gap:1rem;font-size:.95rem;}
+  .intersection-banner strong{color:var(--amber);font-weight:700;}
+  .intersection-banner span{color:var(--text2);font-size:.85rem;}
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1rem;}
+  .project-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.75rem;display:flex;flex-direction:column;transition:border-color .2s,transform .2s,box-shadow .2s;position:relative;overflow:hidden;}
+  .project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--border);transition:background .2s;}
+  .project-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.3);}
+  .project-card.flagship::before{background:var(--amber);}
+  .project-card.flagship{border-color:rgba(240,165,0,.15);}
+  .project-card.live::before{background:var(--teal);}
+  .card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;}
+  .card-num{font-family:var(--font-mono);font-size:.7rem;color:var(--text3);font-weight:500;}
+  .badge-live{display:inline-flex;align-items:center;gap:.3rem;background:rgba(0,212,170,.1);border:1px solid rgba(0,212,170,.25);color:var(--teal);font-family:var(--font-mono);font-size:.65rem;font-weight:500;padding:.2rem .6rem;border-radius:100px;text-transform:uppercase;letter-spacing:.05em;}
+  .badge-live::before{content:'';width:5px;height:5px;background:var(--teal);border-radius:50%;animation:pulse 2s ease infinite;}
+  .badge-wip{background:rgba(240,165,0,.08);border:1px solid rgba(240,165,0,.2);color:var(--amber);font-family:var(--font-mono);font-size:.65rem;font-weight:500;padding:.2rem .6rem;border-radius:100px;text-transform:uppercase;letter-spacing:.05em;}
+  .project-card h3{font-family:var(--font-display);font-size:1.05rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.5rem;line-height:1.3;}
+  .project-card p{font-size:.85rem;color:var(--text2);line-height:1.65;margin-bottom:1.25rem;flex:1;}
+  .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.25rem;}
+  .tag{font-family:var(--font-mono);font-size:.68rem;font-weight:500;color:var(--text3);background:rgba(255,255,255,.04);border:1px solid var(--border);padding:.2rem .55rem;border-radius:3px;}
+  .tag.hl{color:var(--blue);border-color:rgba(79,142,247,.2);background:rgba(79,142,247,.05);}
+  .card-links{display:flex;gap:.75rem;margin-top:auto;}
+  .card-link{font-size:.8rem;font-weight:600;color:var(--text2);text-decoration:none;display:flex;align-items:center;gap:.3rem;transition:color .2s;}
+  .card-link:hover{color:var(--amber);}
+  .card-link.primary{color:var(--amber);}
+  .card-link.primary:hover{color:var(--amber2);}
+  .stack-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.75rem;}
+  .stack-item{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:1rem 1.25rem;transition:border-color .2s,background .2s;}
+  .stack-item:hover{border-color:var(--border2);background:var(--surface2);}
+  .stack-cat{font-family:var(--font-mono);font-size:.65rem;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;}
+  .stack-name{font-size:.88rem;font-weight:600;color:var(--text);}
+  .creds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;}
+  .cred-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color .2s;}
+  .cred-card:hover{border-color:var(--border2);}
+  .cred-icon{width:40px;height:40px;border-radius:8px;background:rgba(240,165,0,.1);border:1px solid rgba(240,165,0,.2);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.7rem;color:var(--amber);font-weight:700;flex-shrink:0;}
+  .cred-name{font-size:.9rem;font-weight:600;margin-bottom:.25rem;}
+  .cred-issuer{font-size:.78rem;color:var(--text2);}
+  .cred-date{font-family:var(--font-mono);font-size:.7rem;color:var(--text3);margin-top:.35rem;}
+  .cred-status{display:inline-block;font-family:var(--font-mono);font-size:.62rem;font-weight:500;padding:.15rem .5rem;border-radius:3px;margin-top:.4rem;text-transform:uppercase;letter-spacing:.05em;}
+  .cred-status.active{background:rgba(0,212,170,.1);color:var(--teal);}
+  .cred-status.progress{background:rgba(240,165,0,.1);color:var(--amber);}
+  .contact-wrapper{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:3rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+  .contact-wrapper h2{font-size:1.8rem;margin-bottom:1rem;}
+  .contact-wrapper p{color:var(--text2);font-size:.9rem;line-height:1.7;}
+  .contact-links{display:flex;flex-direction:column;gap:1rem;}
+  .contact-link{display:flex;align-items:center;gap:1rem;color:var(--text);text-decoration:none;padding:.9rem 1.25rem;border:1px solid var(--border);border-radius:6px;font-size:.88rem;font-weight:500;transition:all .2s;background:var(--surface2);}
+  .contact-link:hover{border-color:var(--amber);color:var(--amber);transform:translateX(4px);}
+  .contact-icon{width:36px;height:36px;background:rgba(255,255,255,.04);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  footer{padding:2.5rem 0;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:var(--text3);flex-wrap:wrap;gap:1rem;}
+  footer a{color:var(--text3);text-decoration:none;transition:color .2s;}
+  footer a:hover{color:var(--amber);}
+  .fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+  .fade-up.visible{opacity:1;transform:translateY(0);}
+  @media(max-width:768px){.positioning-grid{grid-template-columns:1fr;}.contact-wrapper{grid-template-columns:1fr;}nav ul{display:none;}.hero-stats{gap:2rem;}.hero h1{font-size:2.5rem;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a href="#" class="nav-logo">Byron<span>.</span></a>
+    <div class="nav-right">
+      <ul>
+        <li><a href="#projects" data-i18n="nav.projects">Proyectos</a></li>
+        <li><a href="#stack" data-i18n="nav.stack">Tecnología</a></li>
+        <li><a href="#credentials" data-i18n="nav.credentials">Credenciales</a></li>
+        <li><a href="#contact" class="nav-cta" data-i18n="nav.contact">Contacto</a></li>
+      </ul>
+      <button class="lang-btn" onclick="toggleLang()" id="lang-btn" title="Switch language">
+        <span id="lang-flag">🇬🇧</span><span id="lang-label">EN</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge" data-i18n="hero.badge">Disponible para oportunidades · Quito, Ecuador</div>
+    <h1 data-i18n-html="hero.h1">Arquitecto de <em>IA</em><br>Empresarial</h1>
+    <p class="hero-sub" data-i18n-html="hero.sub"><strong>13 años</strong> liderando integraciones, APIs y BPM en entornos financieros regulados. Ahora construyendo sistemas ML en producción — desde pipelines de entrenamiento hasta modelos desplegados con monitoreo en vivo.</p>
+    <div class="hero-actions">
+      <a href="https://dannyepn-creditai.hf.space/ui" target="_blank" class="btn btn-primary">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+        <span data-i18n="hero.demo">Demo en Vivo — CreditAI</span>
+      </a>
+      <a href="https://github.com/dannyepn/prediccion-poblacional-ecuador" target="_blank" class="btn btn-ghost">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="https://linkedin.com/in/byron-daniel-velasco-cueva-211a56322" target="_blank" class="btn btn-ghost">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">13<span>+</span></div><div class="stat-label" data-i18n="hero.stat1">años enterprise</div></div>
+      <div><div class="stat-num">8</div><div class="stat-label" data-i18n="hero.stat2">proyectos IA</div></div>
+      <div><div class="stat-num">1<span>ro</span></div><div class="stat-label" data-i18n="hero.stat3">API B2B cloud · insurtech Ecuador</div></div>
+      <div><div class="stat-num">2023</div><div class="stat-label">Best Tech Projects · Ekos</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="about">
+  <div class="container">
+    <div class="section-label fade-up" data-i18n="pos.label">// posicionamiento</div>
+    <h2 class="fade-up" data-i18n-html="pos.h2">La intersección que<br>casi nadie tiene</h2>
+    <p class="section-sub fade-up" data-i18n="pos.sub">Los arquitectos enterprise saben cómo fallan los sistemas a escala. Los ingenieros ML saben cómo se degradan los modelos en producción. Yo opero en los dos extremos.</p>
+    <div class="positioning-grid fade-up">
+      <div class="pos-card">
+        <div class="pos-icon">01</div>
+        <h3 data-i18n="pos.c1.title">Sistemas Enterprise</h3>
+        <p data-i18n="pos.c1.desc">SOA, REST APIs, BPM, Middleware, Azure. 13 años construyendo integraciones en seguros y banca con responsabilidad de SLA y cumplimiento normativo.</p>
+      </div>
+      <div class="pos-card">
+        <div class="pos-icon">02</div>
+        <h3 data-i18n="pos.c2.title">IA / ML Aplicada</h3>
+        <p data-i18n="pos.c2.desc">Deep Learning, NLP, Computer Vision, RL, MLOps. Experiencia práctica con PyTorch, TensorFlow, scikit-learn, HuggingFace — desde entrenamiento hasta despliegue en producción.</p>
+      </div>
+      <div class="pos-card">
+        <div class="pos-icon">03</div>
+        <h3 data-i18n="pos.c3.title">Gobernanza de IA</h3>
+        <p data-i18n="pos.c3.desc">ISO/IEC 42001 Lead Implementer, CISM (en proceso). Gestión de riesgos, marcos de auditoría e IA responsable en entornos regulados.</p>
+      </div>
+    </div>
+    <div class="intersection-banner fade-up">
+      <svg width="18" height="18" fill="none" stroke="#f0a500" stroke-width="1.5" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      <div><strong data-i18n="pos.banner.title">Arquitecto de IA Empresarial</strong><span data-i18n="pos.banner.desc"> — construye sistemas de IA que funcionan dentro de organizaciones reales: seguros, monitoreados, integrados y mantenibles.</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-label fade-up" data-i18n="proj.label">// proyectos</div>
+    <h2 class="fade-up" data-i18n="proj.h2">Trabajo seleccionado</h2>
+    <p class="section-sub fade-up" data-i18n="proj.sub">Despliegues en producción, pipelines de investigación e IA aplicada — abarcando MLOps, Computer Vision, NLP y Reinforcement Learning.</p>
+    <div class="projects-grid">
+
+      <div class="project-card live fade-up">
+        <div class="card-header"><span class="card-num">01 / MLOps</span><span class="badge-live" data-i18n="badge.live">En vivo</span></div>
+        <h3 data-i18n="p1.title">CreditAI — Aprobación de Crédito con Monitoreo en Producción</h3>
+        <p data-i18n="p1.desc">Pipeline MLOps completo: clasificador MLP (100% accuracy) en Docker, servido con FastAPI, monitoreado con Evidently AI para data drift, desplegado en Hugging Face Spaces con dashboard Gradio.</p>
+        <div class="tags"><span class="tag hl">FastAPI</span><span class="tag hl">Docker</span><span class="tag hl">Evidently AI</span><span class="tag hl">Gradio</span><span class="tag">scikit-learn</span><span class="tag">MLOps</span><span class="tag">HF Spaces</span></div>
+        <div class="card-links">
+          <a href="https://dannyepn-creditai.hf.space/ui" target="_blank" class="card-link primary" data-i18n="link.demo">→ Demo en Vivo</a>
+          <a href="https://huggingface.co/spaces/Dannyepn/CreditAI/blob/main/README.md" target="_blank" class="card-link">Docs</a>
+        </div>
+      </div>
+
+      <div class="project-card flagship fade-up">
+        <div class="card-header"><span class="card-num">02 / <span data-i18n="cat.research">Investigación</span></span><span class="badge-wip" data-i18n="badge.wip">En progreso</span></div>
+        <h3 data-i18n="p2.title">Predicción Poblacional — 221 Cantones del Ecuador</h3>
+        <p data-i18n="p2.desc">Pipeline de 38 scripts comparando 5 familias de modelos (Hamilton-Perry, LightGBM, TFT, ensemble) en 4 censos INEC (1990–2022). Hamilton-Perry logra MAPE 7.79% cantonal — superando proyecciones oficiales en 6.5pp.</p>
+        <div class="tags"><span class="tag hl">LightGBM</span><span class="tag hl">TFT</span><span class="tag">pandas</span><span class="tag">Demography</span><span class="tag">38 scripts</span></div>
+        <div class="card-links">
+          <a href="https://github.com/dannyepn/prediccion-poblacional-ecuador" target="_blank" class="card-link primary">→ GitHub</a>
+          <a href="https://github.com/dannyepn/prediccion-poblacional-ecuador/blob/main/README.md" target="_blank" class="card-link">README</a>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="card-header"><span class="card-num">03 / Deep Learning</span></div>
+        <h3 data-i18n="p3.title">Detección de Tumores Cerebrales — VGG16 + Grad-CAM</h3>
+        <p data-i18n="p3.desc">Transfer Learning con VGG16 en 4,600 imágenes MRI. 97% accuracy con corrección class_weight y EarlyStopping. Visualizaciones Grad-CAM confirman atención clínicamente coherente sobre regiones tumorales.</p>
+        <div class="tags"><span class="tag hl">TensorFlow</span><span class="tag hl">VGG16</span><span class="tag hl">Grad-CAM</span><span class="tag">Transfer Learning</span><span class="tag">Medical AI</span></div>
+        <div class="card-links"><a href="#" class="card-link" data-i18n="link.code">Código (Drive)</a></div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="card-header"><span class="card-num">04 / NLP · GenAI</span></div>
+        <h3 data-i18n="p4.title">Chatbot RAG — Qwen + FAISS + Gradio</h3>
+        <p data-i18n="p4.desc">Chatbot con respuestas basadas en documentos: PDF, DOCX, TXT y XLSX. Embeddings semánticos con sentence-transformers, búsqueda vectorial con FAISS, generación con Qwen1.5-0.5B-Chat, interfaz Gradio.</p>
+        <div class="tags"><span class="tag hl">Qwen</span><span class="tag hl">FAISS</span><span class="tag hl">Gradio</span><span class="tag">RAG</span><span class="tag">sentence-transformers</span></div>
+        <div class="card-links"><a href="#" class="card-link" data-i18n="link.code">Código (Drive)</a></div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="card-header"><span class="card-num">05 / Computer Vision</span></div>
+        <h3 data-i18n="p5.title">Reconocimiento Facial en Tiempo Real — FaceNet + SVM</h3>
+        <p data-i18n="p5.desc">Pipeline completo: Haar Cascade → embeddings FaceNet 128D → SVM. 90.4% confianza en rostros reales a 18 FPS. Análisis crítico del cambio de dominio en caricaturas anime.</p>
+        <div class="tags"><span class="tag hl">FaceNet</span><span class="tag hl">OpenCV</span><span class="tag">SVM</span><span class="tag">TensorFlow</span><span class="tag">Real-time</span></div>
+        <div class="card-links"><a href="#" class="card-link" data-i18n="link.code">Código (Drive)</a></div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="card-header"><span class="card-num">06 / NLP</span></div>
+        <h3 data-i18n="p6.title">Análisis de Sentimientos BERT — Reseñas en Español</h3>
+        <p data-i18n="p6.desc">Fine-tuning de BERT en dataset SFU de reseñas en español. Entrenamiento con GPU, AutoTokenizer, limpieza de URLs/emails y pipeline de inferencia estructurado.</p>
+        <div class="tags"><span class="tag hl">BERT</span><span class="tag hl">HuggingFace</span><span class="tag">Fine-tuning</span><span class="tag">Spanish NLP</span><span class="tag">GPU</span></div>
+        <div class="card-links"><a href="#" class="card-link" data-i18n="link.code">Código (Drive)</a></div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="card-header"><span class="card-num">07 / <span data-i18n="cat.bio">Bioinspirada</span></span></div>
+        <h3 data-i18n="p7.title">Formación de Drones con PSO — Triángulo y H</h3>
+        <p data-i18n="p7.desc">Optimización por Enjambre de Partículas para posicionamiento de flota multi-drone. Formaciones triangular y en H con función fitness que penaliza colisiones y violaciones de límites.</p>
+        <div class="tags"><span class="tag hl">PSO</span><span class="tag">scikit-fuzzy</span><span class="tag">NumPy</span><span class="tag">Metaheuristics</span></div>
+        <div class="card-links"><a href="#" class="card-link" data-i18n="link.code">Código (Drive)</a></div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="card-header"><span class="card-num">08 / Reinforcement Learning</span></div>
+        <h3 data-i18n="p8.title">Agente MDP Value Iteration — Laberinto 50×50</h3>
+        <p data-i18n="p8.desc">Proceso de Decisión de Markov con Value Iteration en cuadrícula de 2,500 estados. Análisis de tradeoffs gamma/tolerancia, mapas Q y extracción de política óptima.</p>
+        <div class="tags"><span class="tag hl">Value Iteration</span><span class="tag">Bellman Equation</span><span class="tag">NumPy</span><span class="tag">MDP</span></div>
+        <div class="card-links"><a href="#" class="card-link" data-i18n="link.code">Código (Drive)</a></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="stack">
+  <div class="container">
+    <div class="section-label fade-up" data-i18n="stack.label">// tecnología</div>
+    <h2 class="fade-up" data-i18n="stack.h2">Con qué construyo</h2>
+    <p class="section-sub fade-up" data-i18n="stack.sub">Integración enterprise con herramientas modernas de IA.</p>
+    <div class="stack-grid fade-up">
+      <div class="stack-item"><div class="stack-cat">ML / DL</div><div class="stack-name">PyTorch · TensorFlow</div></div>
+      <div class="stack-item"><div class="stack-cat">ML / DL</div><div class="stack-name">scikit-learn · XGBoost</div></div>
+      <div class="stack-item"><div class="stack-cat">NLP</div><div class="stack-name">HuggingFace · FAISS</div></div>
+      <div class="stack-item"><div class="stack-cat">MLOps</div><div class="stack-name">Docker · FastAPI</div></div>
+      <div class="stack-item"><div class="stack-cat">MLOps</div><div class="stack-name">Evidently AI · Gradio</div></div>
+      <div class="stack-item"><div class="stack-cat">Cloud</div><div class="stack-name">Azure · HuggingFace</div></div>
+      <div class="stack-item"><div class="stack-cat" data-i18n="stack.cat.int">Integración</div><div class="stack-name">REST APIs · SOA</div></div>
+      <div class="stack-item"><div class="stack-cat" data-i18n="stack.cat.int">Integración</div><div class="stack-name">BPM · ProcessMaker</div></div>
+      <div class="stack-item"><div class="stack-cat" data-i18n="stack.cat.data">Datos</div><div class="stack-name">pandas · NumPy</div></div>
+      <div class="stack-item"><div class="stack-cat">Vision</div><div class="stack-name">OpenCV · FaceNet</div></div>
+      <div class="stack-item"><div class="stack-cat" data-i18n="stack.cat.db">Base de Datos</div><div class="stack-name">SQL Server · PostgreSQL</div></div>
+      <div class="stack-item"><div class="stack-cat">Backend</div><div class="stack-name">Node.js · .NET</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="credentials">
+  <div class="container">
+    <div class="section-label fade-up" data-i18n="cred.label">// credenciales</div>
+    <h2 class="fade-up" data-i18n="cred.h2">Certificaciones y Formación</h2>
+    <p class="section-sub fade-up" data-i18n="cred.sub">Credenciales formales en gobernanza de IA, seguridad y liderazgo de ingeniería.</p>
+    <div class="creds-grid fade-up">
+      <div class="cred-card"><div class="cred-icon">AI</div><div><div class="cred-name">ISO/IEC 42001 Lead Implementer</div><div class="cred-issuer">GRC Gurukul / QRC</div><div class="cred-date">May 2026 · Cert. AI-MS/C/20042026/034</div><span class="cred-status active" data-i18n="status.active">Activo</span></div></div>
+      <div class="cred-card"><div class="cred-icon">CS</div><div><div class="cred-name">CSM® — Certified ScrumMaster</div><div class="cred-issuer">Scrum Alliance</div><div class="cred-date">ID 1027342</div><span class="cred-status active" data-i18n="status.active">Activo</span></div></div>
+      <div class="cred-card"><div class="cred-icon">CI</div><div><div class="cred-name">CISM Exam Review</div><div class="cred-issuer">ISACA Silicon Valley Chapter</div><div class="cred-date">Feb–Mar 2026 · 15 CPE</div><span class="cred-status progress" data-i18n="status.progress">En progreso</span></div></div>
+      <div class="cred-card"><div class="cred-icon">MS</div><div><div class="cred-name" data-i18n="cred.msc">Magíster en IA Aplicada</div><div class="cred-issuer">Universidad Internacional del Ecuador</div><div class="cred-date" data-i18n="cred.msc.date">Tesis en curso — jun. 2026</div><span class="cred-status progress" data-i18n="status.progress">En progreso</span></div></div>
+      <div class="cred-card"><div class="cred-icon">DT</div><div><div class="cred-name" data-i18n="cred.mit">Diplomado — Transformación Digital</div><div class="cred-issuer">MIT Professional Education</div><div class="cred-date">2019</div><span class="cred-status active" data-i18n="status.done">Completado</span></div></div>
+      <div class="cred-card"><div class="cred-icon">EPN</div><div><div class="cred-name" data-i18n="cred.bsc">Ing. en Sistemas Informáticos</div><div class="cred-issuer">Escuela Politécnica Nacional</div><div class="cred-date">2013</div><span class="cred-status active" data-i18n="status.done">Completado</span></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-wrapper fade-up">
+      <div>
+        <div class="section-label" data-i18n="contact.label">// contacto</div>
+        <h2 data-i18n-html="contact.h2">Construyamos<br>algo real</h2>
+        <p data-i18n="contact.desc">Abierto a roles en arquitectura de IA empresarial, MLOps, gestión de productos IA y liderazgo técnico. Basado en Quito, Ecuador — disponible para remoto y reubicación.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:dannyepn@gmail.com" class="contact-link"><div class="contact-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>dannyepn@gmail.com</a>
+        <a href="https://linkedin.com/in/byron-daniel-velasco-cueva-211a56322" target="_blank" class="contact-link"><div class="contact-icon"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg></div>LinkedIn — Byron Velasco Cueva</a>
+        <a href="https://github.com/dannyepn" target="_blank" class="contact-link"><div class="contact-icon"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></div>github.com/dannyepn</a>
+        <a href="https://dannyepn-creditai.hf.space/ui" target="_blank" class="contact-link"><div class="contact-icon" style="font-size:16px">🤗</div>HuggingFace — CreditAI (<span data-i18n="badge.live">En vivo</span>)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+<div class="container">
+  <footer>
+    <span>© 2026 Byron Daniel Velasco Cueva · Quito, Ecuador</span>
+    <div style="display:flex;gap:1.5rem">
+      <a href="https://github.com/dannyepn">GitHub</a>
+      <a href="https://linkedin.com/in/byron-daniel-velasco-cueva-211a56322">LinkedIn</a>
+      <a href="https://dannyepn-creditai.hf.space/ui">HuggingFace</a>
+      <a href="mailto:dannyepn@gmail.com">Email</a>
+    </div>
+  </footer>
+</div>
+
+<script>
+const T={es:{'nav.projects':'Proyectos','nav.stack':'Tecnología','nav.credentials':'Credenciales','nav.contact':'Contacto','hero.badge':'Disponible para oportunidades · Quito, Ecuador','hero.h1':'Arquitecto de <em>IA</em><br>Empresarial','hero.sub':'<strong>13 años</strong> liderando integraciones, APIs y BPM en entornos financieros regulados. Ahora construyendo sistemas ML en producción — desde pipelines de entrenamiento hasta modelos desplegados con monitoreo en vivo.','hero.demo':'Demo en Vivo — CreditAI','hero.stat1':'años enterprise','hero.stat2':'proyectos IA','hero.stat3':'API B2B cloud · insurtech Ecuador','pos.label':'// posicionamiento','pos.h2':'La intersección que<br>casi nadie tiene','pos.sub':'Los arquitectos enterprise saben cómo fallan los sistemas a escala. Los ingenieros ML saben cómo se degradan los modelos en producción. Yo opero en los dos extremos.','pos.c1.title':'Sistemas Enterprise','pos.c1.desc':'SOA, REST APIs, BPM, Middleware, Azure. 13 años construyendo integraciones en seguros y banca con responsabilidad de SLA y cumplimiento normativo.','pos.c2.title':'IA / ML Aplicada','pos.c2.desc':'Deep Learning, NLP, Computer Vision, RL, MLOps. Experiencia práctica con PyTorch, TensorFlow, scikit-learn, HuggingFace — desde entrenamiento hasta despliegue en producción.','pos.c3.title':'Gobernanza de IA','pos.c3.desc':'ISO/IEC 42001 Lead Implementer, CISM (en proceso). Gestión de riesgos, marcos de auditoría e IA responsable en entornos regulados.','pos.banner.title':'Arquitecto de IA Empresarial','pos.banner.desc':' — construye sistemas de IA que funcionan dentro de organizaciones reales: seguros, monitoreados, integrados y mantenibles.','proj.label':'// proyectos','proj.h2':'Trabajo seleccionado','proj.sub':'Despliegues en producción, pipelines de investigación e IA aplicada — abarcando MLOps, Computer Vision, NLP y Reinforcement Learning.','badge.live':'En vivo','badge.wip':'En progreso','cat.research':'Investigación','cat.bio':'Bioinspirada','p1.title':'CreditAI — Aprobación de Crédito con Monitoreo en Producción','p1.desc':'Pipeline MLOps completo: clasificador MLP (100% accuracy) en Docker, servido con FastAPI, monitoreado con Evidently AI para data drift, desplegado en Hugging Face Spaces con dashboard Gradio.','p2.title':'Predicción Poblacional — 221 Cantones del Ecuador','p2.desc':'Pipeline de 38 scripts comparando 5 familias de modelos (Hamilton-Perry, LightGBM, TFT, ensemble) en 4 censos INEC (1990–2022). Hamilton-Perry logra MAPE 7.79% cantonal — superando proyecciones oficiales en 6.5pp.','p3.title':'Detección de Tumores Cerebrales — VGG16 + Grad-CAM','p3.desc':'Transfer Learning con VGG16 en 4,600 imágenes MRI. 97% accuracy con corrección class_weight y EarlyStopping. Visualizaciones Grad-CAM confirman atención clínicamente coherente sobre regiones tumorales.','p4.title':'Chatbot RAG — Qwen + FAISS + Gradio','p4.desc':'Chatbot con respuestas basadas en documentos: PDF, DOCX, TXT y XLSX. Embeddings semánticos con sentence-transformers, búsqueda vectorial con FAISS, generación con Qwen1.5-0.5B-Chat, interfaz Gradio.','p5.title':'Reconocimiento Facial en Tiempo Real — FaceNet + SVM','p5.desc':'Pipeline completo: Haar Cascade → embeddings FaceNet 128D → SVM. 90.4% confianza en rostros reales a 18 FPS. Análisis crítico del cambio de dominio en caricaturas anime.','p6.title':'Análisis de Sentimientos BERT — Reseñas en Español','p6.desc':'Fine-tuning de BERT en dataset SFU de reseñas en español. Entrenamiento con GPU, AutoTokenizer, limpieza de URLs/emails y pipeline de inferencia estructurado.','p7.title':'Formación de Drones con PSO — Triángulo y H','p7.desc':'Optimización por Enjambre de Partículas para posicionamiento de flota multi-drone. Formaciones triangular y en H con función fitness que penaliza colisiones y violaciones de límites.','p8.title':'Agente MDP Value Iteration — Laberinto 50×50','p8.desc':'Proceso de Decisión de Markov con Value Iteration en cuadrícula de 2,500 estados. Análisis de tradeoffs gamma/tolerancia, mapas Q y extracción de política óptima.','link.demo':'→ Demo en Vivo','link.code':'Código (Drive)','stack.label':'// tecnología','stack.h2':'Con qué construyo','stack.sub':'Integración enterprise con herramientas modernas de IA.','stack.cat.int':'Integración','stack.cat.data':'Datos','stack.cat.db':'Base de Datos','cred.label':'// credenciales','cred.h2':'Certificaciones y Formación','cred.sub':'Credenciales formales en gobernanza de IA, seguridad y liderazgo de ingeniería.','cred.msc':'Magíster en IA Aplicada','cred.msc.date':'Tesis en curso — jun. 2026','cred.mit':'Diplomado — Transformación Digital','cred.bsc':'Ing. en Sistemas Informáticos','status.active':'Activo','status.progress':'En progreso','status.done':'Completado','contact.label':'// contacto','contact.h2':'Construyamos<br>algo real','contact.desc':'Abierto a roles en arquitectura de IA empresarial, MLOps, gestión de productos IA y liderazgo técnico. Basado en Quito, Ecuador — disponible para remoto y reubicación.'},en:{'nav.projects':'Projects','nav.stack':'Stack','nav.credentials':'Credentials','nav.contact':'Contact','hero.badge':'Available for opportunities · Quito, Ecuador','hero.h1':'Enterprise <em>AI</em><br>Architect','hero.sub':'<strong>13 years</strong> leading integrations, APIs and BPM in regulated financial environments. Now building production ML systems — from training pipelines to deployed models with live monitoring.','hero.demo':'Live Demo — CreditAI','hero.stat1':'years enterprise','hero.stat2':'AI projects','hero.stat3':'1st B2B cloud API · insurtech Ecuador','pos.label':'// positioning','pos.h2':'The intersection<br>almost no one has','pos.sub':'Enterprise architects know how systems fail at scale. ML engineers know how models degrade in production. I operate at both ends.','pos.c1.title':'Enterprise Systems','pos.c1.desc':'SOA, REST APIs, BPM, Middleware, Azure. 13 years building integrations in insurance and banking with SLA accountability and regulatory compliance.','pos.c2.title':'Applied AI / ML','pos.c2.desc':'Deep Learning, NLP, Computer Vision, RL, MLOps. Hands-on with PyTorch, TensorFlow, scikit-learn, HuggingFace — from training to production deployment.','pos.c3.title':'AI Governance','pos.c3.desc':'ISO/IEC 42001 Lead Implementer, CISM (in progress). Risk management, audit frameworks and responsible AI in regulated environments.','pos.banner.title':'Enterprise AI Architect','pos.banner.desc':' — builds AI systems that work inside real organisations: secure, monitored, integrated and maintainable.','proj.label':'// projects','proj.h2':'Selected work','proj.sub':'Production deployments, research pipelines and applied AI — spanning MLOps, Computer Vision, NLP and Reinforcement Learning.','badge.live':'Live','badge.wip':'In progress','cat.research':'Research','cat.bio':'Bio-Inspired','p1.title':'CreditAI — Loan Approval with Production Monitoring','p1.desc':'End-to-end MLOps pipeline: MLP classifier (100% accuracy) containerized with Docker, served via FastAPI, monitored with Evidently AI for data drift, deployed to Hugging Face Spaces with Gradio dashboard.','p2.title':'Population Prediction — 221 Cantons of Ecuador','p2.desc':'38-script pipeline comparing 5 model families (Hamilton-Perry, LightGBM, TFT, ensemble) on 4 INEC censuses (1990–2022). Hamilton-Perry achieves MAPE 7.79% cantonal — outperforming official projections by 6.5pp.','p3.title':'Brain Tumor Detection — VGG16 + Grad-CAM','p3.desc':'Transfer Learning with VGG16 on 4,600 MRI images. 97% accuracy with class_weight correction and EarlyStopping. Grad-CAM visualisations confirm clinically coherent attention on tumour regions.','p4.title':'RAG Chatbot — Qwen + FAISS + Gradio','p4.desc':'Document-grounded chatbot supporting PDF, DOCX, TXT and XLSX. Semantic embeddings via sentence-transformers, vector search with FAISS, generation with Qwen1.5-0.5B-Chat, deployed with Gradio UI.','p5.title':'Real-Time Face Recognition — FaceNet + SVM','p5.desc':'End-to-end pipeline: Haar Cascade → FaceNet 128-dim embeddings → SVM classifier. 90.4% confidence on real faces at 18 FPS. Critical analysis of domain shift on anime characters.','p6.title':'BERT Sentiment Analysis — Spanish Reviews','p6.desc':'Fine-tuned BERT on SFU Spanish reviews dataset. GPU-accelerated training with AutoTokenizer, URL/email cleaning pipeline, and structured inference pipeline.','p7.title':'PSO Drone Formation — Triangle & H Configurations','p7.desc':'Particle Swarm Optimisation for multi-drone fleet positioning. Triangle and H formation geometries with fitness function penalising collisions and boundary violations.','p8.title':'MDP Value Iteration Agent — 50×50 Maze','p8.desc':'Markov Decision Process with Value Iteration on a 2,500-state grid. Gamma/tolerance trade-off analysis, Q-value maps and optimal policy extraction.','link.demo':'→ Live Demo','link.code':'Code (Drive)','stack.label':'// tech stack','stack.h2':'What I build with','stack.sub':'Enterprise integration meets modern AI tooling.','stack.cat.int':'Integration','stack.cat.data':'Data','stack.cat.db':'Database','cred.label':'// credentials','cred.h2':'Certifications & Education','cred.sub':'Formal credentials in AI governance, security and engineering leadership.','cred.msc':'MSc. Applied Artificial Intelligence','cred.msc.date':'Thesis in progress — Jun 2026','cred.mit':'Diplomado — Digital Transformation','cred.bsc':'B.Sc. Computer Systems Engineering','status.active':'Active','status.progress':'In progress','status.done':'Completed','contact.label':'// contact','contact.h2':"Let's build<br>something real",'contact.desc':'Open to roles in enterprise AI architecture, MLOps, AI product management and technical leadership. Based in Quito, Ecuador — open to remote and relocation.'}};
+
+let lang='es';
+function applyLang(l){
+  lang=l;
+  const t=T[l];
+  document.documentElement.lang=l;
+  document.getElementById('lang-flag').textContent=l==='es'?'🇬🇧':'🇪🇸';
+  document.getElementById('lang-label').textContent=l==='es'?'EN':'ES';
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(t[k]!==undefined)el.textContent=t[k];});
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.dataset.i18nHtml;if(t[k]!==undefined)el.innerHTML=t[k];});
+  document.title=l==='es'?'Byron Velasco — Arquitecto de IA Empresarial':'Byron Velasco — Enterprise AI Architect';
+  try{localStorage.setItem('bv_lang',l);}catch(e){}
+}
+function toggleLang(){applyLang(lang==='es'?'en':'es');}
+try{const s=localStorage.getItem('bv_lang');if(s&&s!=='es')applyLang(s);}catch(e){}
+
+const obs=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){setTimeout(()=>entry.target.classList.add('visible'),entry.target._d||0);obs.unobserve(entry.target);}});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade-up').forEach(el=>{const p=el.closest('.projects-grid,.positioning-grid,.stack-grid,.creds-grid');if(p){const i=Array.from(p.querySelectorAll('.fade-up')).indexOf(el);el._d=i*75;}obs.observe(el);});
+const secs=document.querySelectorAll('section[id]');
+window.addEventListener('scroll',()=>{let c='';secs.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id;});document.querySelectorAll('nav a[href^="#"]').forEach(a=>{a.style.color=a.getAttribute('href')==='#'+c?'var(--amber)':'';});},{passive:true});
+</script>
+</body>
+</html>
