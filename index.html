@@ -354,8 +354,8 @@ function applyLang(l){
   lang=l;
   const t=T[l];
   document.documentElement.lang=l;
-  document.getElementById('lang-flag').textContent=l==='es'?'🇬🇧':'🇪🇸';
-  document.getElementById('lang-label').textContent=l==='es'?'EN':'ES';
+  document.getElementById('lang-flag').textContent=l==='es'?'🇪🇸':'🇬🇧';
+  document.getElementById('lang-label').textContent=l==='es'?'ES':'EN';
   document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(t[k]!==undefined)el.textContent=t[k];});
   document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.dataset.i18nHtml;if(t[k]!==undefined)el.innerHTML=t[k];});
   document.title=l==='es'?'Byron Velasco — Arquitecto de IA Empresarial':'Byron Velasco — Enterprise AI Architect';
